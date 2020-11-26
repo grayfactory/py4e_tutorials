@@ -2,11 +2,11 @@ import re
 
 # handle = open('mbox-short.txt')
 '''
-
 # ^ 시작점
 # . 아무 문자
 # * is any number of times 0을 포함
 # + 는 적어도 1번, 0을 포함하지 않음
+
 ex)
 ^X.*: --> ^(대문자 X로 시작해서), .(any 문자가), *(여러개 있고), :(마지막에 콜론으로 끝나는)
 여기서 대문자 X와 :이 regex가 아니기 때문에 ^x 시작에서 :이 마지막이됨
@@ -21,10 +21,10 @@ X-Sieve: CMU sieve 2.3
 X-DSPAM: Innocent
 X-DSPAM: 0.231
 X-Content type message Body: text/plan
-위 예시에서 X다음에 :콜론까지 공백이 없는 것만 찾아보고 싶다면
+위 예시에서 X-다음에 :콜론까지 공백이 없는 것만 찾아보고 싶다면
 ^X-\S+:
 \S -> match any non-whitespace character 공백이 아닌 문자열
-+  -> one or more times
++  -> one or more times (적어도 1번은 나와야함)
 
 ex3) [0-9]+
 [0-9] -> 0-9범위의 숫자 1개
@@ -43,14 +43,14 @@ greedy matching
 + or * 는 매우 greedy 하다.
 
 '''
-x = 'From: Using the: character'
+x = 'From: Using the: character' # From: (첫번째 콜론을 넘어서) the: (두번째 콜론까지 포함)
 y = re.findall('^F.+:',x)
 print(y)
 
 '''
 non-greedy matching
 ^F.+?:
-? -> 이거를 붙여주면 not greedy 하게 마지막까지 찾지 않는다
+? -> 이거를 붙여주면 not greedy 하게 찾는다 -> 마지막까지 찾지 않는다
 '''
 x = 'From: Using the: character'
 y = re.findall('^F.+?:',x)
@@ -61,7 +61,7 @@ print(y)
 \S -> 공백이 아닌 문자
 + -> one or more
 한 글자 이상의 공백이 아닌 문자 @문자가 있는 패턴
-if 
+if
 \S 뒤에 +가 붙지 않으면 greedy 하지 않기 때문에 @양쪽으로 한칸씩만 find
 '''
 x = 'From stephen.marquad@uct.ac.za sat jan 5 09:12:16 2008'
@@ -115,7 +115,7 @@ print(r1,r2,r3, sep='\n')
 
 '''
 만약 정규표현식에 할당된 $와 같은 문자를 실제 찾는 문자로 인식시키고 싶으면
-앞에사 \를 붙여준다 \$와 같이
+앞에다 \를 붙여준다 \$와 같이
 \$[0-9.]+ 이런식으로, $로 시작하는 숫자 패턴을 찾음
 '''
 

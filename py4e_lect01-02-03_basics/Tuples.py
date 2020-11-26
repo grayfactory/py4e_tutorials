@@ -36,7 +36,7 @@ print(tmp)
 
 
 # now top 10 most common words
-fhand = open('romeo.txt')
+fhand = open('py4e_lect01-02-03_basics/romeo.txt')
 counts = dict()
 
 for lines in fhand:
@@ -70,7 +70,7 @@ From stephen.marquard@uct.ac.za Sat Jan  5 09:14:16 2008
 Once you have accumulated
 the counts for each hour, print out the counts, sorted by hour as shown below.
 '''
-name = "mbox-short.txt"
+name = "py4e_lect01-02-03_basics/mbox-short.txt"
 handle = open(name)
 cnts = dict()
 for lines in handle:

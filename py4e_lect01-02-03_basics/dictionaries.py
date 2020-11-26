@@ -33,13 +33,15 @@ print(counts.items())
 for k,v in counts.items():
     print(k,v)
 
-
-# final code
-handle = open('words.txt')
+# final code for py4e lect basic !
+# open으로 text파일을 열면 1줄씩 list로 반환
+handle = open('py4e_lect01-02-03_basics/words.txt')
 wcnt = dict()
 for line in handle:
     words = line.split()
     for word in words:
+        # wcnt에 dict형태로 각 단어의 빈도 히스토그램
+        # 위에 .get ideom활용
         wcnt[word] = wcnt.get(word,0) + 1
 
 bigcnt = None
@@ -56,7 +58,7 @@ print(stuff)
 
 
 # Assignment 9.4
-handle = open('mbox-short.txt')
+handle = open('py4e_lect01-02-03_basics/mbox-short.txt')
 ecnt = dict()
 for lines in handle:
     if 'From ' not in lines: continue
